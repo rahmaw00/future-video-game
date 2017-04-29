@@ -14,8 +14,8 @@ body {
     background-size: cover;
 }
 
-canvas {
-    background: url("Images/abstract-background.jpg");
+#canvas {
+    background: url("Images/playground.gif");
     background-repeat: no-repeat;
     background-size: cover;
 }

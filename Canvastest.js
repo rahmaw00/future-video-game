@@ -1,17 +1,15 @@
-
+var background;
 var robotCanvas;
 var robotX;
-var y; 
+var y;
 
 var canvas;
 var ctx;
 var noteImage = new Image();
 noteImage.src = "Images/note1.png";
 
-var score = 0; 
+var score = 0;
 
-ctx.font = "30px Arial";
-ctx.fillText(score,10,50);
 // ctx.fillStyle = "#FF0000"
 
 var notes = [];
@@ -47,7 +45,7 @@ setInterval(function() {
     else {
         var note = createNote();
         notes.push(note);
-        
+
     }
 }, 3000);
 //SPEED IT UPDATES
@@ -58,10 +56,10 @@ setInterval(function() {
         note.y += note.speed;
         ctx.drawImage(noteImage, note.x, note.y, note.width, note.height);
         if (isColliding(note)) {
-            console.log(score += 1); 
-            notes.splice(index, 1); 
+            score += 1;
+            notes.splice(index, 1);
         }
-        
+
     });
     obstacles.forEach(function(obs) {
         obs.y += obs.speed;
@@ -71,15 +69,17 @@ setInterval(function() {
 
 }, 200)
 
-function loadplayer(){
+function loadplayer() {
     canvas = document.getElementById("canvas");
     ctx = canvas.getContext("2d");
+    background = document.getElementById('background');
+    ctx.drawImage(background, 0, 0);
     // var x = canvas.width / 2;
     // var y = canvas.height - 20;
     var x = canvas.width / 2;
     robotX = 175;
     y = 600;
-  
+
     var width = 100;
     var height = 100;
     // var width = canvas.width / 2;
@@ -91,27 +91,28 @@ function loadplayer(){
     //     height:20,
     // }; 
     robotCanvas = new Image();
-    
+
     robotCanvas.onload = function() {
         ctx.drawImage(robotCanvas, x, y, width, height);
-      };
+    };
     // ctx.fillStyle = "#0000FF"; 
-    
+
     // ctx.fillRect(player.x, player.y, player.width, player.height);
     robotCanvas.src = 'Images/robot-static.jpg';
 }
 
 $(document).keydown(function(e) {
-    switch(e.which) {
+    switch (e.which) {
         case 37: // left
-        moveRobot(-20);
-        break;
+            moveRobot(-20);
+            break;
 
         case 39: // right
-        moveRobot(+20);
-        break;
+            moveRobot(+20);
+            break;
 
-        default: return; // exit this handler for other keys
+        default:
+            return; // exit this handler for other keys
     }
     e.preventDefault(); // prevent the default action (scroll / move caret)
 });
@@ -122,14 +123,14 @@ function moveRobot(move) {
     var robotPosition = robotX;
     // robotPosition = parseInt(robotPosition, 10);
     console.log("robot" + robotPosition);
-     if ((robotPosition < leftLimit) && (move < 0)) {
-         console.log("too much left");
-         return;
-        }; 
-     if ((robotPosition > rightLimit) && (move > 0)) {
-         console.log("too much right");
-         return;
-     };
+    if ((robotPosition < leftLimit) && (move < 0)) {
+        console.log("too much left");
+        return;
+    };
+    if ((robotPosition > rightLimit) && (move > 0)) {
+        console.log("too much right");
+        return;
+    };
     //var canvas = document.getElementById("canvas");
     //var ctx = canvas.getContext("2d");
     //ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -145,9 +146,9 @@ function moveRobot(move) {
     //ctx.drawImage(robotCanvas, robotX, 500, 100, 100);
 }
 
-function isColliding(obj){
-    if(y< obj.y+obj.height && ((obj.x >robotX && obj.x<robotX+100) || (obj.x+obj.width < robotX+100 &&obj.x+obj.width>robotX))) {
-        return true; 
-    } 
-    
+function isColliding(obj) {
+    if (y < obj.y + obj.height && ((obj.x > robotX && obj.x < robotX + 100) || (obj.x + obj.width < robotX + 100 && obj.x + obj.width > robotX))) {
+        return true;
+    }
+
 }
