@@ -56,6 +56,7 @@ setInterval(function() {
     ctx.fillText(score,10,50);
 
     ctx.drawImage(robotCanvas, robotX, 500, 100, 100);
+    
     notes.forEach(function(note, index) {
         note.y += note.speed;
         ctx.drawImage(noteImage, note.x, note.y, note.width, note.height);
@@ -63,10 +64,10 @@ setInterval(function() {
             score += 1; 
             playAudio(); 
             notes.splice(index, 1); 
-            console.log(notes); 
         }
         
     });
+    
     obstacles.forEach(function(obs) {
         obs.y += obs.speed;
         ctx.fillRect(obs.x, obs.y, obs.width, obs.height);
