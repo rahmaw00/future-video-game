@@ -9,7 +9,13 @@ body {
 }
 
 #play-screen {
-    background: url("Images/playground.gif");
+    background: url("Images/abstract-background.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+canvas {
+    background: url("Images/abstract-background.jpg");
     background-repeat: no-repeat;
     background-size: cover;
 }
@@ -53,7 +59,7 @@ ul {
     color: #E80C7A;
     background-color: black;
     text-shadow: 2px 3px 2px white;
-    box-shadow:5px 5px 112px blue;
+    box-shadow: 5px 5px 112px blue;
 }
 
 #robot {

@@ -1,5 +1,6 @@
 var robotCanvas;
 var robotX;
+var y; 
 
 var canvas;
 var ctx;
@@ -18,7 +19,7 @@ function createNote() {
         y: 0,
         width: 20,
         height: 20,
-        speed: Math.random() * 20,
+        speed: Math.random() * 30,
     }
 }
 //Creates notes
@@ -28,7 +29,7 @@ function createObstacle() {
         y: 0,
         width: Math.random() * 30 + 30,
         height: 20,
-        speed: Math.random() * 20,
+        speed: Math.random() * 30,
     }
 }
 
@@ -56,6 +57,8 @@ setInterval(function() {
         obs.y += obs.speed;
         ctx.fillRect(obs.x, obs.y, obs.width, obs.height);
     });
+    ctx.drawImage(robotCanvas, robotX, 500, 100, 100);
+
 }, 200)
 
 function loadplayer(){
@@ -65,7 +68,7 @@ function loadplayer(){
     // var y = canvas.height - 20;
     var x = canvas.width / 2;
     robotX = 175;
-    var y = 600;
+    y = 600;
   
     var width = 100;
     var height = 100;
@@ -104,17 +107,6 @@ $(document).keydown(function(e) {
 });
 
 function moveRobot(move) {
-    var canvas = document.getElementById("canvas");
-    var ctx = canvas.getContext("2d");
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    notes.forEach(function(note) {
-        note.y += note.speed;
-        ctx.drawImage(noteImage, note.x, note.y, note.width, note.height);
-    });
-    obstacles.forEach(function(obs) {
-        obs.y += obs.speed;
-        ctx.fillRect(obs.x, obs.y, obs.width, obs.height);
-    });
     var leftLimit = -20;
     var rightLimit = 1130;
     var robotPosition = robotX;
@@ -128,7 +120,24 @@ function moveRobot(move) {
          console.log("too much right");
          return;
      };
+    //var canvas = document.getElementById("canvas");
+    //var ctx = canvas.getContext("2d");
+    //ctx.clearRect(0, 0, canvas.width, canvas.height);
+    //notes.forEach(function(note) {
+    //    note.y += note.speed;
+    //    ctx.drawImage(noteImage, note.x, note.y, note.width, note.height);
+    //});
+    //obstacles.forEach(function(obs) {
+    //    obs.y += obs.speed;
+    //    ctx.fillRect(obs.x, obs.y, obs.width, obs.height);
+    //});
     robotX = robotX + move;
-    ctx.drawImage(robotCanvas, robotX, 500, 100, 100);
+    //ctx.drawImage(robotCanvas, robotX, 500, 100, 100);
 }
 
+function isColliding(obj){
+    if(y< obj.y+obj.height && (obj.x >robotX && obj.x<robotX+100) || (obj.x+obj.width < robotX+100 &&obj.x+obj.width>robotX)) {
+        
+    } 
+    
+}
