@@ -20,8 +20,3 @@ $(document).keydown(function(e) {
 function moveRobot(move) {
     console.log("gotKeyPress" + move);
 }
-
-
-function drawPlayer(){
-    
-}

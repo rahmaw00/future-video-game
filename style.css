@@ -1,11 +1,17 @@
 body {
-    background: url("Images/background.gif");
+    background: url("Images/play-screen.gif");
     background-repeat: no-repeat;
     background-size: cover;
     color: white;
-    text-shadow: 2px 1px red;
+    text-shadow: 2px 4px 2px red;
     font-family: 'VT323', monospace;
-    font-size:30px;
+    font-size: 30px;
+}
+
+#play-screen {
+    background: url("Images/playground.gif");
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 .score {
@@ -13,32 +19,30 @@ body {
     margin-top: -6%;
 }
 
-ul{
-     font-size:30px;
-     margin-top:-31%;
+ul {
+    font-size: 40px;
+    margin-top: -31%;
     text-align: right;
-    list-style-type:none;
- 
+    list-style-type: none;
 }
-#dev{
-    position:relative;
+
+#dev {
+    position: relative;
     text-align: right;
-    list-style-type:none;
-    font-size:30px;
+    list-style-type: none;
+    font-size: 40px;
 }
 
 #play {
-     
-    margin-top:-31%;
+    margin-top: -31%;
     margin-left: 40%;
-    font-size: 30px;
+    font-size: 50px;
     font-family: 'VT323', monospace;
     width: 20%;
     border-radius: 12px;
     background-color: #E80C7A;
     color: white;
-    text-shadow: 2px 1px blue;
-    
+    text-shadow: 2px 4px 2px blue;
 }
 
 #play:focus {
@@ -47,14 +51,15 @@ ul{
 
 #play:hover {
     color: #E80C7A;
-    background-color: white;
-    text-shadow: 2px 1px black;
+    background-color: black;
+    text-shadow: 2px 3px 2px white;
+    box-shadow:5px 5px 112px blue;
 }
 
 #robot {
-    z-index:-1;
-    position:block;
-    margin-left: 30%;
+    z-index: -1;
+    position: block;
+    margin-left: 33%;
     margin-top: 1%;
     width: 30%;
 }
@@ -67,4 +72,3 @@ div.fixed {
     width: 300px;
     border: 3px solid #73AD21;
 }
-
