@@ -60,9 +60,10 @@ setInterval(function() {
         note.y += note.speed;
         ctx.drawImage(noteImage, note.x, note.y, note.width, note.height);
         if (isColliding(note)) {
-            console.log(score += 1); 
+            score += 1; 
             playAudio(); 
             notes.splice(index, 1); 
+            console.log(notes); 
         }
         
     });
