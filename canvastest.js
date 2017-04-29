@@ -51,6 +51,8 @@ setInterval(function() {
 //SPEED IT UPDATES
 setInterval(function() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
+    background = document.getElementById('background');
+    ctx.drawImage(background, 0, 0);
     ctx.drawImage(robotCanvas, robotX, 500, 100, 100);
     notes.forEach(function(note, index) {
         note.y += note.speed;
@@ -72,8 +74,7 @@ setInterval(function() {
 function loadplayer() {
     canvas = document.getElementById("canvas");
     ctx = canvas.getContext("2d");
-    background = document.getElementById('background');
-    ctx.drawImage(background, 0, 0);
+    
     // var x = canvas.width / 2;
     // var y = canvas.height - 20;
     var x = canvas.width / 2;

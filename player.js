@@ -1,17 +1,17 @@
+var canvas = document.getElementById("canvas");
+var ctx = canvas.getContext("2d");
 
 var robotCanvas;
 var robotX;
 var y; 
 
-var canvas;
-var ctx;
+
 var noteImage = new Image();
 noteImage.src = "Images/note1.png";
 
 var score = 0; 
 
 ctx.font = "30px Arial";
-ctx.fillText(score,10,50);
 // ctx.fillStyle = "#FF0000"
 
 var notes = [];
@@ -22,9 +22,9 @@ function createNote() {
     return {
         x: Math.random() * (canvas.width - 20),
         y: 0,
-        width: 20,
-        height: 20,
-        speed: Math.random() * 30,
+        width: 35,
+        height: 35,
+        speed: Math.random() * 60,
     }
 }
 //Creates notes
@@ -53,12 +53,15 @@ setInterval(function() {
 //SPEED IT UPDATES
 setInterval(function() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.fillText(score,10,50);
+
     ctx.drawImage(robotCanvas, robotX, 500, 100, 100);
     notes.forEach(function(note, index) {
         note.y += note.speed;
         ctx.drawImage(noteImage, note.x, note.y, note.width, note.height);
         if (isColliding(note)) {
             console.log(score += 1); 
+            playAudio(); 
             notes.splice(index, 1); 
         }
         
@@ -149,5 +152,4 @@ function isColliding(obj){
     if(y< obj.y+obj.height && ((obj.x >robotX && obj.x<robotX+100) || (obj.x+obj.width < robotX+100 &&obj.x+obj.width>robotX))) {
         return true; 
     } 
-    
 }

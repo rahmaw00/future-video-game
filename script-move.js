@@ -1,7 +1,7 @@
 $(document).ready(function(){
     $("#play").click(function(){
         console.log("hello");
-        window.location.href = 'game-page.html';
+        window.location.href = 'testcanvas.html';
     });
 });
 
